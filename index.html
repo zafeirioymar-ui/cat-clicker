@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cat Clicker — Το πρώτο μου project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🐈‍⬛ Cat Clicker</h1>
+    <p>Κάνε κλικ στα γατάκια για πόντους. Πρόσθεσε νέα γατάκια με το κουμπί!</p>
+    <div class="hud">
+      <button id="spawnBtn">➕ Νέο γατάκι</button>
+      <div id="score">Score: 0</div>
+    </div>
+    <button id="musicBtn" aria-pressed="false" title="Toggle music">🔇 Music</button>
+</div>
+
+<!-- container του player -->
+<div id="yt-player" aria-hidden="true"></div>
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="script.js"></script>
+
+  </header>
+
+  <main id="playground" aria-label="πεδίο με κινούμενα γατάκια"></main>
+
+  <audio id="meow" src="assets/meow.mp3" preload="auto"></audio>
+
+  <footer>
+    <a href="#" 
+  </footer>
+
+  <div id="modal" class="hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+     
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* ========== FEMME FATALE — BLACK CAT THEME ========== */
+* { box-sizing: border-box; }
+
+:root{
+  --ink:#0f0f12;         /* βαθύ μαύρο */
+  --ink-soft:#1a1a22;
+  --accent:#8a1538;      /* βουργουνδί */
+  --accent-2:#c71d4a;    /* πιο ζωηρό για hover */
+  --paper:#ffffff;       /* λευκή βάση */
+  --line:#e9e9ef;        /* λεπτές γραμμές */
+  --shadow: 0 10px 30px rgba(15,15,18,.08);
+}
+
+html,body{ height:100%; }
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* διακριτικό φως από πάνω */
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(0,0,0,.05), transparent 60%),
+    radial-gradient(800px 300px at 50% 120%, rgba(0,0,0,.05), transparent 60%);
+}
+
+/* ---------- Header / HUD ---------- */
+header{
+  position: sticky; top:0; z-index:5;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding:16px 20px;
+  backdrop-filter: blur(4px);
+}
+h1{
+  margin:0 0 6px 0;
+  font-family: Georgia, "Times New Roman", serif;   /* πιο elegant */
+  letter-spacing:.5px;
+  font-weight:700;
+}
+h1::after{
+  content:"  — black cat edition";
+  font-weight:400; font-size:.8rem; color:#555;
+}
+
+.hud{
+  display:flex; align-items:center; gap:12px;
+}
+#score{
+  font-weight:700;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fafafa;
+}
+
+/* ---------- Buttons ---------- */
+#spawnBtn{
+  appearance:none; cursor:pointer;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  transition: transform .08s ease, box-shadow .2s ease, background .2s;
+  box-shadow: 0 2px 0 var(--ink);
+}
+#spawnBtn:hover{ background:#f6f6f8; }
+#spawnBtn:active{
+  transform: translateY(2px);
+  box-shadow:none;
+}
+#spawnBtn::before{
+  content:"✦ ";
+  color: var(--accent);
+  font-weight:700;
+}
+
+/* ---------- Playground ---------- */
+#playground{
+  position:relative;
+  height: calc(100vh - 150px);
+  max-height: 820px;
+  margin: 18px;
+  border:2px solid var(--ink);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg,#fff 0%, #fbfbff 100%);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+
+#playground::after{
+  /* σκοτεινό βινιετάρισμα για femme-fatale αίσθηση */
+  content:"";
+  position:absolute; inset:-2px;
+  background:
+    radial-gradient(800px 400px at 20% 10%, rgba(0,0,0,.10), transparent 60%),
+    radial-gradient(900px 450px at 80% 90%, rgba(0,0,0,.10), transparent 60%);
+  pointer-events:none;
+}
+
+/* ---------- Cats (emoji) ---------- */
+.cat{
+  position:absolute;
+  font-size:64px;                   /* μέγεθος emoji */
+  line-height:1;
+  cursor:pointer; user-select:none;
+  transition: transform .12s ease, filter .2s ease;
+  text-shadow: 0 2px 0 rgba(0,0,0,.08);
+}
+.cat:hover{ transform: translateY(-2px) scale(1.02); }
+
+/* Μικρό “σπινθήρα” όταν πατάς */
+.cat:active{
+  transform: scale(.92);
+  filter: drop-shadow(0 0 10px rgba(199,29,74,.25));
+}
+
+/* ---------- Badge (+1) ---------- */
+.badge{
+  position:absolute;
+  top:-16px; left:50%; transform:translateX(-50%);
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:12px; font-weight:700;
+  color:#fff;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  opacity:0; transition: opacity .28s, top .28s;
+  box-shadow: 0 6px 14px rgba(199,29,74,.25);
+}
+
+/* ---------- Footer ---------- */
+footer{
+  padding:18px; text-align:center; color:#666;
+}
+
+/* ---------- Modal (αν το χρησιμοποιείς) ---------- */
+#modal.hidden{ display:none; }
+#modal{
+  position:fixed; inset:0;
+  background: rgba(0,0,0,.36);
+  display:grid; place-items:center; padding:16px;
+}
+.modal-card{
+  width:100%; max-width:460px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow: var(--shadow);
+  padding:18px;
+}
+.modal-card h2{
+  margin:.2rem 0 0.5rem 0;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.modal-card button{
+  margin-top:10px;
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid var(--ink-soft);
+  background:#f7f7fb;
+  cursor:pointer;
+}
+.modal-card button:hover{ background:#f1f1f7; }
+#musicBtn {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--ink);
+  margin-left: 6px;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.hud {
+  display: flex; 
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+#musicBtn {
+  margin-left: auto; /* σταθερά δεξιά */
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--ink);
+  transition: background .2s, color .2s, transform .1s;
+}
+#musicBtn:hover { transform: translateY(-2px); }
+
+#musicBtn[aria-pressed="true"]{
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  color:#fff; border-color:transparent; box-shadow:none;
+}
+
+/* κρύψε οτιδήποτε iframe δημιουργηθεί */
+#yt-player, #yt-player iframe {
+  position:absolute;
+  left: -9999px;
+  width:1px; height:1px; overflow:hidden; border:0;
+}
